@@ -1,1 +1,2 @@
+export RECIPE_API_KEY='e9ff3ed11b27452bb6fbf27e9805c48b'
 python3 manage.py server
