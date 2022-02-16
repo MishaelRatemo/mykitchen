@@ -1,9 +1,12 @@
 import os
 
 class Config:
-    RECIPE_API_URL ='https://api.spoonacular.com/food/search?&apiKey={}'
+    RECIPE_API_BASE_URL ='https://api.spoonacular.com/food/search?&apiKey={}'
+    RECIPE_COMPLEX_API_URL = 'https://api.spoonacular.com/recipes/complexSearch?query={}?&apiKey={}'
     SECRET_KEY = os.environ.get('SECRET_KEY')
+    RECIPE_API_KEY = os.environ.get('RECIPE_API_KEY')
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Access@localhost/mykitchen'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
     
     UPLOADED_PHOTOS_DEST ='app/static/uploads'
     
