@@ -18,21 +18,21 @@ def get_recipes(category):
     '''
     Function that gets the json response to our url request
     '''
-    get_recipes_url = base_url.format("searchResults",api_key)
+    get_recipes_url = base_url.format(api_key)
     print(get_recipes_url)
 
     with urllib.request.urlopen(get_recipes_url) as url:
         get_recipes_data = url.read()
         get_recipes_response = json.loads(get_recipes_data)
 
-        recipe_searchResults = None
+        recipe_Results = None
 
-        if get_recipes_response['searchResults']:
-            recipe_searchResults_list = get_recipes_response['recipe_searchResults']
-            recipe_searchResults = process_searchResults(recipe_searchResults_list)
+        if get_recipes_response['results']:
+            recipe_Results_list = get_recipes_response['results']
+            recipe_Results = process_searchResults(recipe_Results_list)
 
 
-    return recipe_searchResults
+    return recipe_Results
 
 def process_searchResults(recipe_list):
     '''
@@ -45,6 +45,17 @@ def process_searchResults(recipe_list):
         recipe_searchResults: A list of recipe objects
     '''
 
-recipe_searchResults = []
-#for recipe_item in recipe_list:
-    
+    recipe_Results = []
+    for recipe_item in recipe_list:
+        id = recipe_item.get('id')
+        name = recipe_item.get('name')
+        image = recipe_item.get('image')
+        link = recipe_item.get('link')
+        content = recipe_item.get('content')
+
+    if image:
+        recipe_object = Recipe(id,name,image,link,content)
+        recipe_Results.append(recipe_object)
+
+    return recipe_Results
+
