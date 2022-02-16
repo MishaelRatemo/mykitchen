@@ -1,6 +1,7 @@
 import os
 
 class Config:
+    RECIPE_API_URL ='https://api.spoonacular.com/food/search?&apiKey={}'
     SECRET_KEY = os.environ.get('SECRET_KEY')
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Access@localhost/mykitchen'
     
