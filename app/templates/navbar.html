@@ -1,25 +1,37 @@
 <nav class="navbar navbar-expand-lg sticky-top navbar-light py-4" style='background-color:#0F6FAB'>
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/">
-        <img src='{{ url_for('static',filename='images/logokitchen.png')}}' class='rounded-3' alt="" width="90" height="75" />
-      </a>
-      <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse  navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto text-center fs-3  fw-bolder mb-2 mb-lg-0" role="tablist" >
-          <li class="nav-item">
-            <a class="nav-link active text-white" aria-current="page" href="/">Home</a>
-          </li>                             
-        </ul>  
-              
-      </div>
-      <ul class="nav navbar-nav navbar-right">
-         <!-- Current user is a variable that is defined by flask-login and is made available to all the view functions and templates -->
-       
-        <a  class="text-light" href="#">Sign up</a>
-        <a class="text-light"  href="">Login</a>
-        </ul>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <img src='{{ url_for('static',filename='images/logokitchen.png')}}' class='rounded-3' alt="" width="90"
+        height="75" />
+    </a>
+    <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse  navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto text-center fs-3  fw-bolder mb-2 mb-lg-0" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active text-white" aria-current="page" href="/">Home</a>
+        </li>
+      </ul>
+
     </div>
-    
-  </nav>
+    <!-- <ul class="nav navbar-nav navbar-right"> -->
+    <!-- Current user is a variable that is defined by flask-login and is made available to all the view functions and templates -->
+
+    <!-- <a  class="text-light" href="#">Sign up</a>
+        <a class="text-light"  href="">Login</a>
+        </ul> -->
+
+    <ul class="nav navbar-nav navbar-right">
+      {% if current_user.is_authenticated %}
+      <li style="color:white;padding:15px;">{{current_user.username}}</li>
+      <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
+      {% else %}
+      <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
+      {%endif%}
+    </ul>
+  </div>
+
+</nav>

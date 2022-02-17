@@ -1,0 +1,6 @@
+Hello {{user.name}}
+Welcome to OurKitchen
+We have just seen you have signed up for our application and want to welcome you to the family. 
+
+We hope you try out most of ou meals and enjoy
+Welcome again

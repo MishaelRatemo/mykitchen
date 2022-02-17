@@ -23,7 +23,7 @@ def index():
   
   # all_recipes = get_recipes()
   # print(all_recipes)
-  url= 'https://api.spoonacular.com/recipes/complexSearch?&apiKey=d7de66eae26449be8fcc6320812e027d&number=8'
+  url= 'https://api.spoonacular.com/recipes/complexSearch?&apiKey=e9ff3ed11b27452bb6fbf27e9805c48b&number=8'
   data= requests.get(url).json()['results']
   print(data)
   
@@ -38,7 +38,7 @@ def index():
 def search(recipe_name):
     ''' View function to display the search results '''
     
-    search_url = 'https://api.spoonacular.com/recipes/complexSearch?query=berries&number=50&apiKey=d7de66eae26449be8fcc6320812e027d'
+    search_url = 'https://api.spoonacular.com/recipes/complexSearch?query=berries&number=50&apiKey=e9ff3ed11b27452bb6fbf27e9805c48b'
     s_data = requests.get(search_url).json()['results']
     print(s_data)
     

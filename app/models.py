@@ -20,7 +20,7 @@ class User(UserMixin, db.Model):
     log_password = db.Column(db.String(255))
     profile_img = db.Column(db.String())
     confirmed = db.Column(db.Boolean, default=False)
-    comments = db.relationship('Comment', backref='user', lazy='dynamic')
+    comments = db.relationship('Recipe_comment', backref='user', lazy='dynamic')
     
     
     @property
