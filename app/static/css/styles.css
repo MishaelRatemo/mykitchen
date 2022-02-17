@@ -1,0 +1,13 @@
+.carousel-item{
+    height: 80vh;
+}
+.carousel-caption{
+    background-color: rgba(8, 4, 4, 0.6);
+    width: 70%;
+    margin: auto;
+    border-radius: 50px;
+}
+.carousel-inner{
+    
+    height: 50vh !important;
+}
