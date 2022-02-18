@@ -7,13 +7,6 @@
 
 {% block content  %}
 
-<!-- <div class="container bg-dark">
-    <form>
-        <input type="text" name="recipe_query" placeholder="Search for a eecipe" class="form-control">
-        <input type="submit"  value="Search" class="btn btn-primary">
-    </form>
-
-</div> -->
 
     <div id="carouselExampleCaptions" class="carousel slide h-50" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -54,15 +47,28 @@
         </button>
     </div>
 
-
+    <div class="container text-center">
+        <h2 style="padding-top: 3%;">
+              It's time for cooking! What do you have in the fridge? <br>
+              <small class="text-muted"> Let's warm up with a joke: <p class="text-success" >{{ joke }}</p> </small>
+        </h2>
+        <br><br>
+        <form action="/recipes"class='d-flex justify-content-center'>
+              <div class="input-group mb-3" style="max-width: 50%;">
+                  <input type="text" class="form-control" placeholder="Search a recipe e.g Pasta" aria-label="Ingridients" aria-describedby="button-addon2" name="ingridients">
+                  <div class="input-group-append">
+                      <button class="btn btn-outline-success" type="submit" id="button-addon2">Search</button>
+                  </div>       	 
+              </div>
+        </form>
+      </div>
     <main class=" container  d-flex justify-content-around flex-wrap">
         {% for item in recipes %}
         <div>
-            <!-- <p>ID: {{item.id}}</p> -->
+            
             <div>
                 <img src="{{item.image}}" alt="">
                 <p>{{item.title| truncate(20) }}</p>
-
             </div>
         </div>        
         {% endfor %}
