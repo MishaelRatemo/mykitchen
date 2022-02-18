@@ -61,17 +61,6 @@ def search(recipe_name):
     title = f'search results for {recipe_name}'
     return render_template('search.html',recipes = s_data, title=title)
 
-
-
-# @root.route('/recipe/<int:id>')
-# def recipe(id):
-
-#     recipe = get_movie(id)
-#     title = f'{recipe.title}'
-    
-
-#     return render_template('movie.html',title = title,movie = movie, reviews=reviews)
-
 @root.route('/recipes')
 def get_recipes():
   if (str(request.args['ingridients']).strip() != ""):
@@ -85,3 +74,24 @@ def get_recipes():
   response = requests.request("GET", yurl + randomFind, headers=headers, params=querystring).json()
   print(response)
   return render_template('recipes.html', recipes=response['recipes'])
+
+@root.route('/recipe')
+def get_recipe():
+  recipe_id = request.args['id']
+  recipe_info_endpoint = "recipes/{0}/information".format(recipe_id)
+  ingedientsWidget = "recipes/{0}/ingredientWidget".format(recipe_id)
+  equipmentWidget = "recipes/{0}/equipmentWidget".format(recipe_id)
+
+  recipe_info = requests.request("GET", yurl + recipe_info_endpoint, headers=headers).json()
+    
+  recipe_headers = {
+    	'x-rapidapi-host': "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+    	'x-rapidapi-key': "cc6c3317f7msh684a2b86f374b2cp16d1efjsnb097fe790e7d",
+    	'accept': "text/html"
+  }
+  querystring = {"defaultCss":"true", "showBacklink":"false"}
+
+  recipe_info['inregdientsWidget'] = requests.request("GET", yurl + ingedientsWidget, headers=recipe_headers, params=querystring).text
+  recipe_info['equipmentWidget'] = requests.request("GET", yurl + equipmentWidget, headers=recipe_headers, params=querystring).text
+  
+  return render_template('recipe.html', recipe=recipe_info)
