@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+ {{recipe['title']}}
+{% endblock %}
+
+{% block content %}
+
+<div style="max-width: 70%; margin: auto; padding-top:3%">
+  <div class="media">
+        <img src="{{recipe['image']}}" class="mr-3" alt="..." width="20%" height="20%">
+        <h5 class="mt-0">{{recipe['title']}}</h5>
+        <h3>Recipe Ingredients</h3>
+        {{recipe['inregdientsWidget'] | safe }}<br>
+        <h3>Equipements to be used</h3>
+        {{recipe['equipmentWidget'] | safe}}
+        <div class="media-body">
+            <h3>Recipe Instructions/Steps</h3>
+            {{recipe['instructions']}}
+        </div>
+  </div>
+  <marquee behavior="" direction="left" class="text-success">
+        <h3>Thank You for using our application</h3>
+  </marquee>
+</div>
+{% endblock %}
